@@ -1,0 +1,22 @@
+{
+  "tab": {
+    "posts": "Posts",
+    "snippets": "Snippets",
+    "essays": "Essays",
+    "projects": "Projects"
+  },
+  "intro": {
+    "title": "👋 Hi! I'm iahzznil",
+    "description": "These violent delights have violent ends. ",
+    "link": "Take a Look"
+  },
+  "dateFormat": "MMM dd, yyyy",
+  "comment": {
+    "title": "Comments",
+    "btn": "Click to Comment",
+    "owner": "Author"
+  },
+  "projects": {
+    "title": "Projects"
+  }
+}

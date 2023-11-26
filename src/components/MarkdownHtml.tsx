@@ -36,8 +36,6 @@ const toHtml = (markdown: string, playground?: boolean) => {
 
   const md = new MarkdownIt({ highlight });
   const defaultFence = md.renderer.rules.fence;
-  const defaultRender = md.renderer.rules.image;
-  const vimeoRE       = /^https?:\/\/(www\.)?vimeo.com\/([a-zA-Z1-9]+)($|\/)/;
 
   md.renderer.rules.fence = (tokens, idx, options, env, self) => {
     const { content, info } = tokens[idx];
@@ -56,7 +54,15 @@ const toHtml = (markdown: string, playground?: boolean) => {
     }
 
     if (info == "youtubem") {
-      return '<div style="max-width:40%;"><div style="position:relative;padding-bottom:calc(56.25% + 52px);height: 0;"><iframe style="position:absolute;top:0;left:0;" width="100%" height="100%" src="https://odesli.co/embed/?url=https%3A%2F%2Fsong.link%2Fy%2F' + content + '&theme=light" frameborder="0" allowfullscreen sandbox="allow-same-origin allow-scripts allow-presentation allow-popups allow-popups-to-escape-sandbox" allow="clipboard-read; clipboard-write"></iframe></div></div>';
+      return '<div style="max-width:80%;"><div style="position:relative;padding-bottom:calc(56.25% + 52px);height: 0;"><iframe style="position:absolute;top:0;left:0;" width="100%" height="100%" src="https://odesli.co/embed/?url=https%3A%2F%2Fsong.link%2Fy%2F' + content + '&theme=light" frameborder="0" allowfullscreen sandbox="allow-same-origin allow-scripts allow-presentation allow-popups allow-popups-to-escape-sandbox" allow="clipboard-read; clipboard-write"></iframe></div></div>';
+    }
+
+    if (info == "wangyi") {
+      return '<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=' + content + '&auto=1&height=66"></iframe>';
+    }
+
+    if (info == "iframe") {
+      return content;
     }
 
     return defaultFence?.(tokens, idx, options, env, self) || '';
